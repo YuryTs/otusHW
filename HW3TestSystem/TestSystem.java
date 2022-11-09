@@ -1,3 +1,5 @@
+package HW3TestSystem;
+
 import java.util.Scanner;
 
 public class TestSystem {

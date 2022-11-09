@@ -1,3 +1,5 @@
+package HW2homeWork;
+
 import java.util.Base64;
 import java.util.Scanner;
 
