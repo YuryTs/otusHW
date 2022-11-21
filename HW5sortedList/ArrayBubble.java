@@ -1,15 +1,23 @@
 package HW5sortedList;
 
-import javax.xml.crypto.Data;
+import java.util.Random;
 
 public class ArrayBubble {
 
     private long[] a;
     private int elems;
+    private int max;
+
 
     public ArrayBubble(int max) {
+        this.max=max;
         a = new long[max];
         elems = 0;
+    }
+
+    public int getMax(){
+
+        return max;
     }
 
     public void into(long value) {
@@ -17,11 +25,12 @@ public class ArrayBubble {
         elems++;
     }
 
-    public void printer() {
-        for (int i = 0; i < elems; i++) {
-            System.out.print(a[i] + " ");
+    public void arrayAdd(ArrayBubble temp){
+        for (int i=0; i<temp.getMax(); i++){
+            int value = new Random().nextInt();
+            temp.into(value);
+
         }
-        System.out.println("____________");
     }
 
     private void toSwap(int first, int second) {
@@ -37,6 +46,14 @@ public class ArrayBubble {
                     toSwap(in, in + 1);
             }
         }
+    }
+
+    public void countTimeSortArray(ArrayBubble array){
+        long start = System.currentTimeMillis();
+        array.bubbleSorted();
+        long end = System.currentTimeMillis();
+        long difference = end - start;
+        System.out.println("\nВремя отработки массива методом bubbleSorted составило: " + difference + " милисек.");
     }
 }
 
