@@ -3,7 +3,7 @@ package HW2homeWork;
 import java.util.Base64;
 import java.util.Scanner;
 
-public class HomeWork{
+ class HomeWork{
 	public static void main(String[] args){
 	Scanner sc = new Scanner(System.in);
 	System.out.println("Please entry you full name");

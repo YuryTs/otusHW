@@ -2,7 +2,7 @@ package HW4testSystemOOP;
 
 import java.util.Scanner;
 
-public class ConsoleUserInput implements UserInput {
+class ConsoleUserInput implements UserInput {
 
     @Override
     public int read() {
