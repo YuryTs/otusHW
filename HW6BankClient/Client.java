@@ -1,10 +1,8 @@
 package HW6BankClient;
 
 class Client {
-//    private int id;
     private String name;
     private int age;
-//    private String code;
 
     Client(String name, int age) {
         this.name = name;
@@ -25,11 +23,7 @@ class Client {
     }
 
     public String toString() {
-        return name+" " + age+" лет";
-    }
-
-    public String getName() {
-        return name;
+        return name + " " + age + " лет. ";
     }
 }
 

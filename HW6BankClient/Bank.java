@@ -3,62 +3,78 @@ package HW6BankClient;
 import java.util.*;
 
 class Bank {
+    static Client ivanov = new Client("Иванов", 25);
+    static Client antonov = new Client("Антонов", 68);
+    static Client petrov = new Client("Петров", 18);
+
+    static Account account1 = new Account(10);
+    static Account account2 = new Account(20);
+    static Account account3 = new Account(30);
+    static Account account4 = new Account(40);
+
+
     public static void main(String[] args) {
 
-//        Map<Client, Account> clientAccounts = getClientAccount();
+
+        Map<Client, List<Account>> clientAcounts = getClientAccounts();
+        Map<Account, Client> accountClient = getAccountClient();
 
 
-        Client client1 = new Client("Иванов", 48);
-        Client client2 = new Client("Антонов", 18);
-        Client client3 = new Client("Петров", 82);
+        Client ivanov = new Client("Иванов", 25);
+        List<Account> ivanovAccounts = clientAcounts.get(ivanov);
+        System.out.println("Клиент: " + ivanov + "Счета: " + ivanovAccounts);
 
-        Account account1 = new Account(10, 3452.4);
-        Account account2 = new Account(20, -345.5);
-        Account account3 = new Account(30, 134623.0);
-        Account account4 = new Account(40, 56000);
+        Client antonov = new Client("Антонов", 68);
+        List<Account> antonovAccounts = clientAcounts.get(antonov);
+        System.out.println("Клиент: " + antonov + "Счета: " + antonovAccounts);
 
+        Client petrov = new Client("Петров", 18);
+        List<Account> petrovAccounts = clientAcounts.get(petrov);
+        System.out.println("Клиент: " + petrov + "Счета: " + petrovAccounts);
 
-        List<Account> accountList1 = new ArrayList<>();
-        accountList1.add(account1);
+        Account account1 = new Account(10);
+        Client accountIvanov = accountClient.get(account1);
+        System.out.println("Счет: " + account1 + " принадлежит клиенту: " + accountIvanov);
 
-        List<Account> accountList2 = new ArrayList<>();
-        accountList2.add(account2);
+        Account account2 = new Account(20);
+        Client accountAntonov = accountClient.get(account2);
+        System.out.println("Счет: " + account2 + " принадлежит клиенту: " + accountAntonov);
 
-        List<Account> accountList3 = new ArrayList<>();
-        accountList3.add(account3);
-        accountList3.add(account4);
+        Account account3 = new Account(30);
+        Client accountPetrov = accountClient.get(account3);
+        System.out.println("Счет: " + account3 + " принадлежит клиенту: " + accountPetrov);
 
-
-
-        HashMap<Client, List<Account>> hm = new HashMap<>();
-
-        hm.put(client1, accountList1);
-        hm.put(client2, accountList2);
-        hm.put(client3, accountList3);
-
-        Set<Map. Entry<Client, List<Account>>> set   = hm. entrySet ( ) ;
-        System.out.println(set);
-
+        Account account4 = new Account(40);
+        Client accountPetrov2 = accountClient.get(account4);
+        System.out.println("Счет: " + account4 + " принадлежит клиенту: " + accountPetrov2);
     }
-//    private static List<Account> getAccount(Client client){
-//        ArrayList<Account> arrayList= new ArrayList<>();
-//        arrayList.add
-//    }
+
+    private static Map<Client, List<Account>> getClientAccounts() {
+
+        List<Account> accountsList1 = new ArrayList<>();
+        accountsList1.add(account1);
+        List<Account> accountsList2 = new ArrayList<>();
+        accountsList2.add(account2);
+        List<Account> accountsList3 = new ArrayList<>();
+        accountsList3.add(account3);
+        accountsList3.add(account4);
 
 
-//
-//    }
-//    private static Map<Client, Account> getClientAccount(){
-//        Client client1 = new Client("Иванов", 48);
-//        Client client2 = new Client("Антонов", 18);
-//        Client client3 = new Client("Петров", 82);
-//
-//        Map<Client, Account> clientAccounts = new HashMap<>();
-//        clientAccounts.put(client1, new Account(944, client));
-//        clientAccounts.put(client2, new Account(522));
-//        clientAccounts.put(client3, new Account(3443));
-//
-//        return clientAccounts;
-//    }
+        Map<Client, List<Account>> clientAccounts = new HashMap<>();
+        clientAccounts.put(ivanov, accountsList1);
+        clientAccounts.put(antonov, accountsList2);
+        clientAccounts.put(petrov, accountsList3);
+        return clientAccounts;
+    }
+
+    private static Map<Account, Client> getAccountClient() {
+
+        Map<Account, Client> accountClient = new HashMap<>();
+        accountClient.put(account1, ivanov);
+        accountClient.put(account2, antonov);
+        accountClient.put(account3, petrov);
+        accountClient.put(account4, petrov);
+        return accountClient;
+    }
 
 }
