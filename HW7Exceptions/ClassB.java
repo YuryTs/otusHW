@@ -23,7 +23,7 @@ public class ClassB {
             }
         }
         if (str.equals("")) {
-            throw new MyException();
+            throw new MyException("s");
         }
         return str;
     }
