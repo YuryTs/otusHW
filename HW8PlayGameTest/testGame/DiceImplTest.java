@@ -8,11 +8,10 @@ import org.junit.jupiter.api.Test;
 class DiceImplTest {
 
     @Test
-    public void checkingValueOfDiceRoll() {
+    public void testValuesOfRangeDiceRoll() {
         String scenario = "Тест броска кубика ";
         Dice dice = new DiceImpl();
         try {
-
             for (int i = 0; i < 100; i++) {
                 int result = dice.roll();
                 boolean expected;
