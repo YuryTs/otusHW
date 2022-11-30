@@ -1,7 +1,7 @@
-package HW8PlayGameTest.testGame;
+package testGame;
 
-import HW8PlayGameTest.game.Dice;
-import HW8PlayGameTest.game.DiceImpl;
+import game.Dice;
+import game.DiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +11,7 @@ class DiceImplTest {
     public void testValuesOfRangeDiceRoll() {
         String scenario = "Тест броска кубика ";
         Dice dice = new DiceImpl();
+
         try {
             for (int i = 0; i < 100; i++) {
                 int result = dice.roll();
