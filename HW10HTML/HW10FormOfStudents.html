@@ -74,35 +74,35 @@
     </style>
     <script>
         function addStudent() {
-            let nameStudent = document.getElementById("nameStudent"); //input fio
+            let nameStudent = document.getElementById("nameStudent");
 
-            let boDy = document.getElementById("boDy"); //тело таблицы
-            let newRow = document.createElement("tr"); //создание элемента
-            let fioTd = document.createElement("td");//создание элемента
-            fioTd.innerHTML = nameStudent.value //изменение содержимого элемента fioTd содержимым из input
-            boDy.appendChild(newRow) //добавляем узел newRow к телу таблицы
-            newRow.appendChild(fioTd) //добавляем узел fioTd в строку newRow
+            let boDy = document.getElementById("boDy");
+            let newRow = document.createElement("tr");
+            let fioTd = document.createElement("td");
+            fioTd.innerHTML = nameStudent.value;
+            boDy.appendChild(newRow);
+            newRow.appendChild(fioTd);
 
-            let gender = document.getElementById("genderChoose")
-            let choose = gender.options[gender.selectedIndex].text
-            let gCh = document.createElement("td")
-            gCh.innerHTML = choose
-            newRow.appendChild(gCh)
+            let gender = document.getElementById("genderChoose");
+            let choose = gender.options[gender.selectedIndex].text;
+            let gCh = document.createElement("td");
+            gCh.innerHTML = choose;
+            newRow.appendChild(gCh);
 
-            let birthDay = document.getElementById("birthDay") //создаем элемент
-            let bD = document.createElement("td")
-            bD.innerHTML = birthDay.value
-            newRow.appendChild(bD)
+            let birthDay = document.getElementById("birthDay");
+            let bD = document.createElement("td");
+            bD.innerHTML = birthDay.value;
+            newRow.appendChild(bD);
 
             let [y, M, d] = birthDay.value.split(/[- ]/);
-            let toDay = new Date()
+            let toDay = new Date();
             let yourDate = Math.floor((toDay - new Date(y, parseInt(M) - 1, d)) / 1000 / 60 / 60 / 365 / 24);
             console.log(`yourDate ${yourDate}`);
-            let age = document.createElement("td")
-            age.innerHTML = yourDate
-            newRow.appendChild(age)
+            let age = document.createElement("td");
+            age.innerHTML = yourDate;
+            newRow.appendChild(age);
 
-            var rows = window.document.querySelectorAll("tbody tr");
+            let rows = window.document.querySelectorAll("tbody tr");
             let sum;
             let a = 0;
             for (var i = 1; i < rows.length; i++) {
@@ -116,12 +116,12 @@
             }
 
             let tFloor = document.getElementById("years");
-            const val = Math.round(a / (rows.length - 1))
-            let dat = document.getElementById("dat")
+            const val = Math.round(a / (rows.length - 1));
+            let dat = document.getElementById("dat");
 
             if (!dat){
-                dat = document.createElement("td")
-                dat.id = "dat"
+                dat = document.createElement("td");
+                dat.id = "dat";
             }
                 dat.innerHTML = val;
             tFloor.appendChild(dat);
