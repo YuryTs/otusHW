@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HW10 Studetnts information</title>
+    <style>
+        form {
+            border: 1px solid steelblue;
+            width: 600px;
+            min-height: 180px;
+            margin-left: 10px;
+        }
+
+        .field {
+            clear: both;
+            text-align: right;
+        }
+
+        label {
+            float: left;
+        }
+        #dat{
+            border: none;
+        }
+
+        form input {
+            border: 1px solid steelblue;
+            padding: 1px;
+            width: 240px;
+            height: 20px;
+        }
+
+        form select {
+            border: 1px solid steelblue;
+            padding: 1px;
+            width: 245px;
+            height: 22px;
+
+        }
+
+        .content-block {
+            width: 550px;
+            margin-left: 20px;
+            line-height: 20px;
+        }
+
+        .student-tab {
+            border: 1px solid steelblue;
+            width: 650px;
+            border-collapse: collapse;
+            margin-bottom: 300px;
+        }
+
+        .student-tab tr td {
+            border: 1px solid steelblue;
+        }
+
+        .student-tab-col1 {
+            width: 300px;
+        }
+
+        .student-tab-col2 {
+            width: 120px;
+        }
+
+        .student-tab-col3 {
+            width: 150px;
+        }
+
+        .student-tab-col4 {
+            width: 80px;
+        }
+
+    </style>
+    <script>
+        function addStudent() {
+            let nameStudent = document.getElementById("nameStudent"); //input fio
+
+            let boDy = document.getElementById("boDy"); //тело таблицы
+            let newRow = document.createElement("tr"); //создание элемента
+            let fioTd = document.createElement("td");//создание элемента
+            fioTd.innerHTML = nameStudent.value //изменение содержимого элемента fioTd содержимым из input
+            boDy.appendChild(newRow) //добавляем узел newRow к телу таблицы
+            newRow.appendChild(fioTd) //добавляем узел fioTd в строку newRow
+
+            let gender = document.getElementById("genderChoose")
+            let choose = gender.options[gender.selectedIndex].text
+            let gCh = document.createElement("td")
+            gCh.innerHTML = choose
+            newRow.appendChild(gCh)
+
+            let birthDay = document.getElementById("birthDay") //создаем элемент
+            let bD = document.createElement("td")
+            bD.innerHTML = birthDay.value
+            newRow.appendChild(bD)
+
+            let [y, M, d] = birthDay.value.split(/[- ]/);
+            let toDay = new Date()
+            let yourDate = Math.floor((toDay - new Date(y, parseInt(M) - 1, d)) / 1000 / 60 / 60 / 365 / 24);
+            console.log(`yourDate ${yourDate}`);
+            let age = document.createElement("td")
+            age.innerHTML = yourDate
+            newRow.appendChild(age)
+
+            var rows = window.document.querySelectorAll("tbody tr");
+            let sum;
+            let a = 0;
+            for (var i = 1; i < rows.length; i++) {
+                var cols = rows[i].querySelectorAll('td');
+                for (var j = 0; j < cols.length; j++) {
+                    console.log(cols[3].textContent);
+                    sum = parseInt(cols[3].textContent);
+                    console.log(sum);
+                }
+                a = a + sum;
+            }
+
+            let tFloor = document.getElementById("years");
+            const val = Math.round(a / (rows.length - 1))
+            let dat = document.getElementById("dat")
+
+            if (!dat){
+                dat = document.createElement("td")
+                dat.id = "dat"
+            }
+                dat.innerHTML = val;
+            tFloor.appendChild(dat);
+
+        }
+    </script>
+</head>
+
+<body>
+<div>
+    <h2>Форма добавления информации о студенте</h2>
+</div>
+
+<form id="formForAdd">
+    <div class="content-block">
+        <p>
+        <div class="field">
+            <label for="nameStudent">Имя студента:</label>
+            <input id="nameStudent" content="fio" type="text" value=""/>
+        </div>
+        </p>
+
+        <p>
+        <div class="field">
+            <label for="birthDay">Дата рождения:</label>
+            <input id="birthDay" type="date" name="bithday" value=""/>
+        </div>
+        </p>
+        <p>
+        <div class="field">
+            <label for="genderChoose">Пол:</label>
+            <select id="genderChoose" name="gender">
+                <option value="1" selected>женщина</option>
+                <option value="2">мужчина</option>
+            </select>
+        </div>
+        </p>
+
+        </br>
+        <button type="button" onclick="addStudent() ">Добавить</button>
+        </br>
+    </div>
+</form>
+
+<div class="tableBlock" id="t_1">
+    <h2>Таблица студентов</h2>
+    <table class="student-tab" id="studentTab">
+        <thead>
+        <tr>
+            <td class="student-tab-col1">Имя студента</td>
+            <td class="student-tab-col2">Пол</td>
+            <td class="student-tab-col3">Дата рождения</td>
+            <td class="student-tab-col4">Возраст</td>
+        </tr>
+        </thead>
+        <tbody id="boDy">
+        <tr>
+            <!--            <td></td>-->
+            <!--            <td></td>-->
+            <!--            <td></td>-->
+            <!--            <td></td>-->
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+
+            <td colspan="3">Средний возраст:</td>
+            <td id="years"></td>
+
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+</body>
+
+
+</html>
